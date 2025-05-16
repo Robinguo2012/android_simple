@@ -71,4 +71,11 @@ suspend fun main() = coroutineScope {
         println("Combined Collected: $it")
     }
 
+    val stateFlow = MutableStateFlow(0)
+    stateFlow.emit(1)
+    stateFlow.collect { println(" StateFlow Collected: 1 $it") } // 立刻收到 1
+
+    stateFlow.emit(2)
+
+    stateFlow.collect { println(" StateFlow Collected: 2 $it") }
 }
